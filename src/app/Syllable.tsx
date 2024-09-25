@@ -4,6 +4,8 @@ import { useState, useRef } from "react"
 
 export default function Syllable({syl, onClickFun}: {syl: Syllabl, onClickFun: any}){
     return(
-        <p onClick = {() => onClickFun()} style={{padding: "50px", border: syl.getSelected() ? "2.5px solid black" : "1px solid black", backgroundColor: syl.getIsCorrect() ? "limegreen":"white"}}>{syl.getSyllableString()}</p>
+        <div onClick = {() => onClickFun()} style={{marginRight: 15, display: "inline-flex", justifyContent: "center", width: "100px", height: "100px", border: syl.getSelected() ? "2.5px solid black" : "1px solid black", backgroundColor: syl.getIsCorrect() ? "limegreen":"white"}}>
+            <p>{syl.getSyllableString()}</p>
+        </div>
     )
 }

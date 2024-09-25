@@ -1,18 +1,18 @@
 'use client'
 import { useState, useRef } from "react";
 import Puzzle from "./Puzzle"
-import SyllablastLoader from "./SyllablastLoader";
+import {Modal} from '@mui/material'
 
 export default function SyllablastApp({configuration, loaderFunction}: {configuration: any, loaderFunction: any}){
     let score = useRef<number>(0);
-    var isSolved = false;
+    const [solved, setSolved] = useState(false)
     const [swaps, setSwaps] = useState<number>(0);
     const boardStates = useRef<any>([configuration.config]);
     const syl1 = useRef<any>([]);
     const syl2= useRef<any>([]);
     const solution = configuration.solution;
     const [selectedSyl, setSelectedSyl] = useState<any>([])
-    var rowFirsts: []
+    let rowFirsts: any[]
     rowFirsts = []
 
     const setSylls = (syll: number[]) => {
@@ -74,6 +74,9 @@ export default function SyllablastApp({configuration, loaderFunction}: {configur
                 }
             }
         }
+        if(score.current == 16){
+            setSolved(true)
+        }
     }
 
     const revertBoardState = (swapNum: number) => {
@@ -82,21 +85,26 @@ export default function SyllablastApp({configuration, loaderFunction}: {configur
     }
     
     return(
-        <div>
-            <button onClick = {() => {swaps >= 1 ? revertBoardState(swaps-1) : null}}>Undo</button>
-            <button onClick = {() => revertBoardState(0)}>Reset</button>
-            <p>{score.current}</p>
-            <Puzzle syllOnClick = {setSylls} boardState = {boardStates.current[swaps]}></Puzzle>
-            <div>
-                <p>Congratulations, you completed the puzzle!</p>
-                <p>Choose another configuration</p>
-                {[0,1,2].map(num => {
-                    return(
-                        <button onClick = {() => {loaderFunction(num)}}></button>
-                    )
-                })}
-                <SyllablastLoader setConfig = {null}></SyllablastLoader>
+        <div style={{marginTop: '25px'}}>
+            <div style={{marginLeft: "34%"}}>
+                <button style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => {swaps >= 1 ? revertBoardState(swaps-1) : null}}>Undo</button>
+                <button style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => revertBoardState(0)}>Reset</button>
+                <button style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => loaderFunction({})}>Exit</button>
             </div>
+            <div>
+                <p style = {{marginLeft: "50%", fontWeight: "bold", fontSize: 30}}>Score: {score.current}</p>
+                <p style = {{marginLeft: "50%", fontWeight: "bold", fontSize: 30}}>Swaps: {swaps}</p>
+            </div>
+            <Puzzle syllOnClick = {setSylls} boardState = {boardStates.current[swaps]}></Puzzle>
+            <Modal open = {solved} onClose = {() => {}} aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description">
+                <div style = {{marginLeft: "38%", marginTop: "15%", width: "25%", height: "25%", backgroundColor: "white"}}>
+                    <div>
+                        <p style = {{textAlign: 'center', paddingTop: "5%"}}>Congratulations, you completed the puzzle!</p>
+                        <button style = {{paddingLeft: "5%", marginLeft: "31%", fontWeight: "bold", padding: 25, backgroundColor: "white", fontSize: 15}} onClick={() => loaderFunction({})}>Load New Config</button>
+                    </div>
+                </div>
+            </Modal>
         </div>
     )
 }

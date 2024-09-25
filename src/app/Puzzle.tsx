@@ -5,11 +5,11 @@ import { Syllabl } from "./Syllabl"
 
 export default function Puzzle({boardState, syllOnClick}: {boardState: Syllabl[][], syllOnClick: any}){
     return(
-        <div style = {{paddingLeft: "200px", border: "1px solid black"}}>
+        <div style = {{marginLeft: "37%", marginRight: "67.4%"}}>
             {boardState.map((row, rowNum) => {
                 return(
                     <div>
-                        <div style={{display: "inline-flex", justifyContent: "flex"}}>
+                        <div style={{display: "inline-flex", marginTop: "10px"}}>
                         {row.map((syll, colNum) => {
                             return(
                                 <Syllable onClickFun = {() => syllOnClick([rowNum, colNum])} syl = {syll}></Syllable>
