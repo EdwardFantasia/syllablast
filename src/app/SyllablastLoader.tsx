@@ -49,12 +49,9 @@ export default function SyllablastLoader({setConfig}: {setConfig: any}){
             <div style={{marginLeft: "2.5%", display: "flex", alignItems: "center" , justifyContent: "center"}}>
                 {configs.map((config, configNum) => {
                     return(
-                        <button style = {{padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20, fontWeight: 'bold'}} onClick={() => setConfig(config)}>Config {configNum + 1}</button>
+                        <button data-testid = {configNum} key = {configNum} style = {{padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20, fontWeight: 'bold'}} onClick={() => setConfig(config)}>Config {configNum + 1}</button>
                     )
                 })}
-            </div>
-            <div style={{paddingTop: 50, display: "flex", alignItems: "center" , justifyContent: "center"}}>
-                <img style={{display: "flex", alignItems: "center" , justifyContent: "center"}} width = "50" height = "50" src="https://clipart-library.com/2023/Crescent-Moon-PNG-Clipart.png"></img>
             </div>
         </div>
     )

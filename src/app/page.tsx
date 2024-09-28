@@ -37,14 +37,16 @@ export default function page() {
 
   if(Object.keys(config).length == 0){
     return(
-      <div>
+      <div data-testid = {"loader"}>
         <SyllablastLoader setConfig={loadConfig}></SyllablastLoader>
       </div>
     )
   }
   else{
     return(
-      <SyllablastApp configuration={config} loaderFunction = {loadConfig}></SyllablastApp>
+      <div data-testid = {"app"}>
+        <SyllablastApp configuration={config} loaderFunction = {loadConfig}></SyllablastApp>
+      </div>
     )
   }
 }

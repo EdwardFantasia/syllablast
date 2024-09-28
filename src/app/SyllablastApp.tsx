@@ -87,13 +87,13 @@ export default function SyllablastApp({configuration, loaderFunction}: {configur
     return(
         <div style={{marginTop: '25px'}}>
             <div style={{marginLeft: "34%"}}>
-                <button style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => {swaps >= 1 ? revertBoardState(swaps-1) : null}}>Undo</button>
-                <button style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => revertBoardState(0)}>Reset</button>
-                <button style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => loaderFunction({})}>Exit</button>
+                <button data-testid = "undo" style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => {swaps >= 1 ? revertBoardState(swaps-1) : null}}>Undo</button>
+                <button data-testid = "reset" style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => revertBoardState(0)}>Reset</button>
+                <button data-testid = "exit" style = {{fontWeight: "bold", padding: 50, backgroundColor: "white", marginRight: 40, fontSize: 20}} onClick = {() => loaderFunction({})}>Exit</button>
             </div>
-            <div>
-                <p style = {{marginLeft: "50%", fontWeight: "bold", fontSize: 30}}>Score: {score.current}</p>
-                <p style = {{marginLeft: "50%", fontWeight: "bold", fontSize: 30}}>Swaps: {swaps}</p>
+            <div style={{marginLeft: "41.5%", display: "inline-flex"}}>
+                <p style = {{paddingRight: 85, fontWeight: "bold", fontSize: 30}}>Score: {score.current}</p>
+                <p style = {{fontWeight: "bold", fontSize: 30}}>Swaps: {swaps}</p>
             </div>
             <Puzzle syllOnClick = {setSylls} boardState = {boardStates.current[swaps]}></Puzzle>
             <Modal open = {solved} onClose = {() => {}} aria-labelledby="modal-modal-title"
