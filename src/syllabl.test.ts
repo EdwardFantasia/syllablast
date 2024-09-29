@@ -3,7 +3,7 @@ import { Syllabl } from "./app/Syllabl";
 import { cleanup } from "@testing-library/react";
 
 describe('Syllabl', () => {
-    it('Should instantiate', () => {
+    it('Should instantiate a Syllabl object', () => {
         const testSyl = new Syllabl("test")
         expect(testSyl.getIsCorrect() == false)
         expect(testSyl.getSyllableString() == "test")
@@ -13,7 +13,7 @@ describe('Syllabl', () => {
 })
 
 describe('Syllabl', () => {
-    it('Should change fields of syl', () => {
+    it('Should change fields of Syllabl instance', () => {
         const testSyl = new Syllabl("test")
         expect(testSyl.setIsCorrect(true))
         expect(testSyl.setSelected(true))
