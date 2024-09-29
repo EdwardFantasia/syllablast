@@ -98,10 +98,11 @@ export default function SyllablastApp({configuration, loaderFunction}: {configur
             <Puzzle syllOnClick = {setSylls} boardState = {boardStates.current[swaps]}></Puzzle>
             <Modal open = {solved} onClose = {() => {}} aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
-                <div style = {{marginLeft: "38%", marginTop: "15%", width: "25%", height: "25%", backgroundColor: "white"}}>
+                <div style = {{marginLeft: "38%", marginTop: "15%", width: "25%", height: "30%", backgroundColor: "white"}}>
                     <div>
                         <p style = {{textAlign: 'center', paddingTop: "5%"}}>Congratulations, you completed the puzzle!</p>
                         <button style = {{paddingLeft: "5%", marginLeft: "31%", fontWeight: "bold", padding: 25, backgroundColor: "white", fontSize: 15}} onClick={() => loaderFunction({})}>Load New Config</button>
+                        <button style = {{paddingLeft: "5%", marginTop: "5%", marginLeft: "28%", fontWeight: "bold", padding: 25, backgroundColor: "white", fontSize: 15}} onClick={() => {revertBoardState(0); setSolved(false)}}>Reset Current Config</button>
                     </div>
                 </div>
             </Modal>
