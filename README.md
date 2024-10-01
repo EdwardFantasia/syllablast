@@ -17,6 +17,9 @@ npm run dev
 
 Once running, open [http://localhost:3000](http://localhost:3000) with your browser to use 
 
+## Playing Syllablast
+Select a configuration then once the configuration is loaded, click on two syllables to swap them. Keep swapping syllables until you make complete words in each row.
+
 ## Testing Syllablast
 
 To test coverage, run:
