@@ -29,6 +29,7 @@ test("Page", async() => {
     fireEvent.click(getByTestId('exit'))
 
     expect(checkTitle === undefined)
+    cleanup()
 })
 
 test("Page", async() => {
